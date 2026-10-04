@@ -1,5 +1,7 @@
 
 // //1
+// using System.Runtime.CompilerServices;
+
 // class Program
 // {
 //     static void Main()
@@ -22,9 +24,32 @@
 //             Console.WriteLine($"Ditt saldo är nu: {konto.Balance}");
 //         }
 
-//         konto.Deposit(100);
-
 //         Console.WriteLine(konto.Balance);
+
+//         Console.Write("Hur mycket vill du sätta in?: ");
+//         int depAmount = int.Parse(Console.ReadLine());
+
+//         try
+//         {
+//             if (depAmount < 0)
+//                 throw new ArgumentOutOfRangeException(nameof(depAmount));
+//             else
+//             {
+//                 konto.Deposit(depAmount);
+//             }
+//         }
+//         catch (OverflowException)
+//         {
+//             Console.WriteLine("För stor summa!");
+//         }
+//         catch (ArgumentOutOfRangeException ex)
+//         {
+//             Console.WriteLine("Måste vara ett positivt heltal!");
+//         }
+//         finally
+//         {
+//             Console.WriteLine($"Ditt saldo är nu: {konto.Balance}");
+//         }
 //     }
 // }
 
@@ -44,17 +69,6 @@
 
 //     public void Deposit(int amount)
 //     {
-//         try
-//         {
-//             this.Balance += amount;
-//         }
-//         catch (OverflowException)
-//         {
-//             Console.WriteLine("För stor summa!");
-//         }
-//         catch (ArgumentException)
-//         {
-//             Console.WriteLine("Måste vara ett heltal!");
-//         }
+//         Balance += amount;
 //     }
 // }
