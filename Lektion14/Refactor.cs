@@ -8,19 +8,40 @@
 //         Name = name;
 //         Price = price;
 //     }
-
-//     public void Show()
-//     {
-//         Console.WriteLine($"{Name} - {Price} kr");
-//     }
 // }
 
 // class Order
 // {
 //     public string EatOptions { get; set; }
 //     public List<MenuItem> _items = [];
+// }
 
-//     public void EatHereOrTakeAway()
+// class Program
+// {
+
+//     Order order = new Order();
+//     static void Main()
+//     {
+//         List<MenuItem> menu = [
+//             new MenuItem("Pizza", 80),
+//             new MenuItem("Pasta", 70),
+//             new MenuItem("Salad", 50)
+//         ];
+
+//         var order = new Order();
+
+//         EatHereOrTakeAway(order);
+
+//         do
+//         {
+//             order.AddItem(menu);
+//             Console.WriteLine("Vill du lägga till en rätt till? (j/n) ");
+//         } while (Console.ReadLine()?.ToLower() == "j");
+
+//         ShowTotal(order);
+//     }
+
+//     public static void EatHereOrTakeAway(Order order)
 //     {
 //         Console.WriteLine("Välj alternativ");
 //         Console.WriteLine("1. Äta här");
@@ -30,22 +51,37 @@
 
 //         if (val == 1)
 //         {
-//             EatOptions = "Äta här";
+//             order.EatOptions = "Äta här";
 //         }
 //         else
 //         {
-//             EatOptions = "Ta med";
+//             order.EatOptions = "Ta med";
 //         }
 
-//         Console.WriteLine($"Du valde att: {EatOptions.ToLower()}");
+//         Console.WriteLine($"Du valde att: {order.EatOptions.ToLower()}");
 //     }
 
-//     public void AddItem(List<MenuItem> menu)
+//     public static void ShowMenuItem(MenuItem item)
+//     {
+//         Console.WriteLine($"{item.Name} - {item.Price} kr");
+//     }
+
+//     public static void ShowTotal(List<MenuItem> order)
+//     {
+//         decimal total = 0;
+//         foreach (var item in order)
+//         {
+//             total += item.Price;
+//         }
+//         Console.WriteLine($"Totalt pris: {total} kr");
+//     }
+
+//     public void AddItem(List<MenuItem> menu, MenuItem item, Order order)
 //     {
 //         for (int i = 0; i < menu.Count; i++)
 //         {
 //             Console.Write($"{i + 1}.");
-//             menu[i].Show();
+//             ShowMenuItem(menu[i]);
 //         }
 
 //         Console.Write("Ange rättens nummer: ");
@@ -60,40 +96,6 @@
 //         _items.Add(menu[index - 1]);
 
 //         Console.Write($"Lade till: ");
-//         menu[index - 1].Show();
-//     }
-
-//     public void ShowTotal()
-//     {
-//         decimal total = 0;
-//         foreach (var item in _items)
-//         {
-//             total += item.Price;
-//         }
-//         Console.WriteLine($"Totalt pris: {total} kr");
-//     }
-// }
-
-// class Program
-// {
-//     static void Main()
-//     {
-//         List<MenuItem> menu = [
-//             new MenuItem("Pizza", 80),
-//             new MenuItem("Pasta", 70),
-//             new MenuItem("Salad", 50)
-//         ];
-
-//         var order = new Order();
-
-//         order.EatHereOrTakeAway();
-
-//         do
-//         {
-//             order.AddItem(menu);
-//             Console.WriteLine("Vill du lägga till en rätt till? (j/n) ");
-//         } while (Console.ReadLine()?.ToLower() == "j");
-
-//         order.ShowTotal();
+//         ShowMenuItem(menu[index - 1]);
 //     }
 // }
